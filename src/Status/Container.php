@@ -5,9 +5,11 @@ use Status\EnvironmentLoader;
 
 class Container
 {
+    private $manager;
+
     public function __construct()
     {
-        $manager = new Manager(
+        $this->manager = new Manager(
             new EnvironmentLoader
         );
     }
