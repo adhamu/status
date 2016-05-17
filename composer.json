@@ -1,0 +1,11 @@
+{
+    "name": "adhamu/status",
+    "description": "Status page for website and services",
+    "authors": [
+        {
+            "name": "Amit Dhamu",
+            "email": "dev@amitd.co"
+        }
+    ],
+    "require": {}
+}
