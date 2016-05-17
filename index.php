@@ -1,9 +1,9 @@
 <?php
     require __DIR__ . '/vendor/autoload.php';
-    $app = new Status\Container;
+    $app = (new Status\Container)->get();
 
     echo '<pre>';
-    print_r( $app->get()->getEnv() );
+    print_r( $app->getEnv() );
     echo '</pre>';
 ?>
 
