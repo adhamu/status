@@ -1,16 +1,23 @@
 <?php
 namespace Status;
 
-use Status\EnvironmentLoader;
+use josegonzalez\Dotenv\Loader;
 
 class Container
 {
-    private $manager;
+    private $app;
+
+    const ENV = '.env';
 
     public function __construct()
     {
-        $this->manager = new Manager(
-            new EnvironmentLoader
+        $this->app = new App(
+            new Loader(self::ENV)
         );
+    }
+
+    public function get()
+    {
+        return $this->app;
     }
 }
