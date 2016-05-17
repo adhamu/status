@@ -1,11 +1,14 @@
 {
     "name": "adhamu/status",
     "description": "Status page for website and services",
-    "authors": [
-        {
-            "name": "Amit Dhamu",
-            "email": "dev@amitd.co"
-        }
-    ],
-    "require": {}
+    "authors": [{
+        "name": "Amit Dhamu",
+        "email": "dev@amitd.co"
+    }],
+    "require": {
+        "josegonzalez/dotenv": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "Status": "src/" }
+    }
 }
