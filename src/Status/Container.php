@@ -2,6 +2,7 @@
 namespace Status;
 
 use josegonzalez\Dotenv\Loader;
+use Status\Services\HashedAssetLoadService;
 
 class Container
 {
@@ -12,7 +13,8 @@ class Container
     public function __construct()
     {
         $this->app = new App(
-            new Loader(self::ENV)
+            new Loader(self::ENV),
+            new HashedAssetLoadService
         );
     }
 

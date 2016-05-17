@@ -1,0 +1,25 @@
+{
+    "sources": {
+        "styles": [
+            "resources/scss/styles.scss"
+        ],
+        "scripts": [
+            "bower_components/bootstrap/dist/js/bootstrap.js",
+            "resources/js/main.js"
+        ],
+        "imgs": [
+            "resources/img/**/*.png",
+            "resources/img/**/*.gif",
+            "resources/img/**/*.jpg",
+            "resources/img/**/*.jpeg"
+        ]
+    },
+    "paths": {
+        "sass": "resources/sass/",
+        "js": "resources/js/",
+        "imgs": "resources/img/",
+        "fonts": "resources/fonts/",
+        "dist": "dist/",
+        "bower": "bower_components/**/"
+    }
+}
