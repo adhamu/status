@@ -11,9 +11,9 @@
 <html>
 <head>
     <title>Status</title>
-    <script type="text/javascript" src="/resources/js/main.js"></script>
 </head>
 <body>
 
+    <script type="text/javascript" src="/resources/js/main.js"></script>
 </body>
 </html>
