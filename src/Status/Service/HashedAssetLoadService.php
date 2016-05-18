@@ -1,5 +1,5 @@
 <?php
-namespace Status\Services;
+namespace Status\Service;
 
 class HashedAssetLoadService
 {
