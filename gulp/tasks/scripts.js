@@ -5,19 +5,20 @@ module.exports = function(gulp, config, $) {
 
         // Empty dist directory of all JS
         del([
-            config.paths.dist + "**/*.{js,js.map,js.json}"
+            config.paths.dist + '**/*.js'
         ]);
 
         // Concat and minify all Javascript
         gulp.src(config.sources.scripts)
-            .pipe($.sourcemaps.init())
             .pipe($.debug())
             .pipe($.concat("script.min.js"))
             .pipe($.uglify())
             .pipe($.rev())
-            .pipe($.sourcemaps.write("./maps"))
             .pipe(gulp.dest(config.paths.dist))
-            .pipe($.rev.manifest("manifest.js.json"))
+            .pipe($.rev.manifest(config.paths.dist + 'manifest.json', {
+                base: process.cwd() + '/' + config.paths.dist,
+                merge: true
+            }))
             .pipe(gulp.dest(config.paths.dist))
             .pipe($.size());
     }

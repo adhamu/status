@@ -1,7 +1,7 @@
 var gulp   = require("gulp"),
     $      = require("gulp-load-plugins")(),
     config = require("./gulp/config.json"),
-    tasks  = ["styles", "scripts", "images"];
+    tasks  = ["styles", "scripts"];
 
 // Main tasks
 for (i = 0; i < tasks.length; i++) {
@@ -17,4 +17,4 @@ gulp.task("watch", function() {
 });
 
 // Default task
-gulp.task("default", ["styles", "scripts", "images", "watch"]);
+gulp.task("default", ["styles", "scripts", "watch"]);

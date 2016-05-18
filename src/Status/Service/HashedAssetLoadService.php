@@ -14,7 +14,7 @@ class HashedAssetLoadService
     {
         $file = basename($filename);
         $directory = "/dist/";
-        $manifest = self::loadManifest($file);
+        $manifest = $this->loadManifest();
 
         return $directory.$manifest[$file];
     }
@@ -23,14 +23,11 @@ class HashedAssetLoadService
      * Loads the manifest file which stores the actual filenames of hashed resources.
      * Regenerated when gulp compiles styles or scripts
      *
-     * @param  string
      * @return array
      */
-    protected function loadManifest($filename)
+    protected function loadManifest()
     {
-        $file_type = pathinfo($filename, PATHINFO_EXTENSION);
-        $manifest_file = __DIR__."/../../../dist/manifest.{$file_type}.json";
-        $manifest = file_get_contents($manifest_file);
+        $manifest = file_get_contents(__DIR__.'/../../../dist/manifest.json');
 
         return json_decode($manifest, true);
     }

@@ -5,13 +5,12 @@ module.exports = function(gulp, config, $) {
 
         // Empty dist directory of CSS
         del([
-            config.paths.dist + "**/*.{css,css.map,css.json}"
+            config.paths.dist + '**/*.css'
         ]);
 
         // Compile SASS, concat with any other CSS and minify
         gulp.src(config.sources.styles)
             .pipe($.debug())
-            .pipe($.sourcemaps.init())
             .pipe($.sass())
             .pipe($.autoprefixer({
                 browsers: ["last 5 versions", "> 1%", "ie 8", "ie 7"]
@@ -19,11 +18,11 @@ module.exports = function(gulp, config, $) {
             .pipe($.concat("styles.min.css"))
             .pipe($.minifyCss())
             .pipe($.rev())
-            .pipe($.sourcemaps.write("./maps", function() {
-                includeContent: false
-            }))
             .pipe(gulp.dest(config.paths.dist))
-            .pipe($.rev.manifest("manifest.css.json"))
+            .pipe($.rev.manifest(config.paths.dist + 'manifest.json', {
+                base: process.cwd() + '/' + config.paths.dist,
+                merge: true
+            }))
             .pipe(gulp.dest(config.paths.dist))
             .pipe($.size());
     }
