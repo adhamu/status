@@ -5,7 +5,8 @@
     echo $app->getTwigEnvironment()->render(
         'layouts/base.html.twig',
         [
-            'the' => 'variables',
-            'go' => 'here'
+            'stylesheet' => $app->getStylesheetFilename(),
+            'script' => $app->getScriptFilename(),
+            'currentYear' => date("Y")
         ]
     );
