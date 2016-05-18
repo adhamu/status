@@ -6,8 +6,8 @@
         "email": "dev@amitd.co"
     }],
     "require": {
-        "josegonzalez/dotenv": "dev-master",
-        "twig/twig": "^1.24"
+        "twig/twig": "^1.24",
+        "vlucas/phpdotenv": "^2.2"
     },
     "autoload": {
         "psr-0": { "Status": "src/" }

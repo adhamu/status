@@ -1,7 +1,7 @@
 <?php
 namespace Status;
 
-use josegonzalez\Dotenv\Loader;
+use Dotenv\Dotenv;
 use Status\Service\HashedAssetLoadService;
 use Twig_Environment;
 
@@ -12,13 +12,12 @@ class App
     private $twigEnvironment;
 
     public function __construct(
-        Loader $environmentLoader,
+        Dotenv $environmentLoader,
         HashedAssetLoadService $assetLoader,
         Twig_Environment $twigEnvironment
     ) {
         $this->environmentLoader = $environmentLoader;
-        $this->environmentLoader->parse();
-        $this->environmentLoader->toEnv();
+        $this->environmentLoader->load();
 
         $this->assetLoader = $assetLoader;
         $this->twigEnvironment = $twigEnvironment;
