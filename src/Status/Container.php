@@ -11,7 +11,7 @@ class Container
     private $app;
 
     const ENV = '.env';
-    const TEMPLATE_DIR = 'resources/templates/';
+    const TEMPLATE_DIR = 'resources/views/';
 
     public function __construct()
     {
