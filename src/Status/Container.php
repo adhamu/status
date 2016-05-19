@@ -4,6 +4,7 @@ namespace Status;
 use Dotenv\Dotenv;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
+use Twig_Extension_Debug;
 use GuzzleHttp\Client;
 use Symfony\Component\Process\Process;
 
@@ -23,6 +24,7 @@ class Container
             new Dotenv($_SERVER['DOCUMENT_ROOT']),
             new HashedAssetLoadService,
             new Twig_Environment(new Twig_Loader_Filesystem(self::TEMPLATE_DIR)),
+            new Twig_Extension_Debug,
             new WebsiteStatusCheckerService(new Client),
             new ServerStatusCheckerService(new Process)
         );

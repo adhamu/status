@@ -21,6 +21,7 @@ class App
         Dotenv $environmentLoader,
         HashedAssetLoadService $assetLoader,
         Twig_Environment $twigEnvironment,
+        Twig_Extension_Debug $twigDebug,
         WebsiteStatusCheckerService $websiteStatusCheckerService,
         ServerStatusCheckerService $serverStatusCheckerService
     ) {
@@ -29,7 +30,7 @@ class App
 
         $this->assetLoader = $assetLoader;
         $this->twigEnvironment = $twigEnvironment;
-        $this->twigEnvironment->addExtension(new Twig_Extension_Debug());
+        $this->twigEnvironment->addExtension($twigDebug);
         $this->websiteStatusCheckerService = $websiteStatusCheckerService;
         $this->serverStatusCheckerService = $serverStatusCheckerService;
     }
