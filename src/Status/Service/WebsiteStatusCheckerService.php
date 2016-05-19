@@ -2,6 +2,7 @@
 namespace Status\Service;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 class WebsiteStatusCheckerService
 {
@@ -14,13 +15,19 @@ class WebsiteStatusCheckerService
 
     public function checkUrl($url)
     {
-        $response = $this->httpClient->request('GET', $url);
-
-        $result = [
-            'code' => $response->getStatusCode(),
-            'phrase' => $response->getReasonPhrase()
-        ];
-
+        $result = [];
+        try {
+            $response = $this->httpClient->request('GET', $url);
+            $result = [
+                'code' => $response->getStatusCode(),
+                'phrase' => $response->getReasonPhrase()
+            ];
+        } catch (ClientException $e) {
+            $result = [
+                'code' => $e->getResponse()->getStatusCode(),
+                'phrase' => $e->getResponse()->getReasonPhrase()
+            ];
+        }
         return $result;
     }
 }
