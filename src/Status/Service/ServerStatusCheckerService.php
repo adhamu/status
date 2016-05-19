@@ -8,7 +8,7 @@ class ServerStatusCheckerService
 {
     public function isServiceAvailble($pid)
     {
-        $process = new Process("cat /var/run/{$pid}");
+        $process = new Process("stat /var/run/{$pid}");
         $process->run();
 
         if (!$process->isSuccessful()) {

@@ -23,12 +23,14 @@
                 {% if serviceStatus.status %}
                     {% set alertState = 'alert-success' %}
                     {% set stateIcon = 'check' %}
+                    {% set stateMessage = 'OK' %}
                 {% else %}
                     {% set alertState = 'alert-danger' %}
                     {% set stateIcon = 'times' %}
+                    {% set stateMessage = 'Unavailable' %}
                 {% endif %}
                 <div class="alert {{ alertState }}" role="alert">
-                    <span class="pull-right">{{ serviceStatus.status }} &nbsp; <i class="fa fa-{{ stateIcon }}"></i></span>
+                    <span class="pull-right">{{ stateMessage }} &nbsp; <i class="fa fa-{{ stateIcon }}"></i></span>
                     <strong>{{ serviceStatus.name }}</a></strong>
                 </div>
             {% endfor %}
