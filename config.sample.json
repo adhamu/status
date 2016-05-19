@@ -1,0 +1,18 @@
+{
+    "web": [{
+        "name": "Google",
+        "url": "https://www.google.co.uk"
+    }, {
+        "name": "Apple",
+        "url": "http://www.apple.com/uk"
+    }],
+    "server": [{
+        "name": "Apache",
+        "service": "httpd",
+        "pid": "httpd/httpd.pid"
+    }, {
+        "name": "MySQL",
+        "service": "mysqld",
+        "pid": "mysqld/mysqld.pid"
+    }]
+}

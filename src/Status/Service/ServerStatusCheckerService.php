@@ -6,22 +6,15 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class ServerStatusCheckerService
 {
-    private $process;
-
-    public function __construct(Process $process)
+    public function isServiceAvailble($pid)
     {
-        $this->process = $process;
-    }
-
-    public function checkService($command)
-    {
-        $process = new Process($command);
+        $process = new Process("cat /var/run/{$pid}");
         $process->run();
 
         if (!$process->isSuccessful()) {
-            return 'Unavailable';
+            return false;
         }
 
-        return "OK";
+        return true;
     }
 }

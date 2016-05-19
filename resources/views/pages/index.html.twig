@@ -20,7 +20,7 @@
             <br>
             <legend>Server</legend>
             {% for serviceStatus in serviceStatuses %}
-                {% if serviceStatus.status == 'OK' %}
+                {% if serviceStatus.status %}
                     {% set alertState = 'alert-success' %}
                     {% set stateIcon = 'check' %}
                 {% else %}
