@@ -13,6 +13,8 @@ use Status\Service\ServerStatusCheckerService;
 class App
 {
     private $configService;
+    private $stylesheet;
+    private $scriptFile;
     private $environmentLoader;
     private $assetLoader;
     private $twigEnvironment;
@@ -21,6 +23,8 @@ class App
 
     public function __construct(
         ConfigService $configService,
+        $stylesheet,
+        $scriptFile,
         Dotenv $environmentLoader,
         HashedAssetLoadService $assetLoader,
         Twig_Environment $twigEnvironment,
@@ -29,6 +33,8 @@ class App
         ServerStatusCheckerService $serverStatusCheckerService
     ) {
         $this->configService = $configService;
+        $this->stylesheet = $stylesheet;
+        $this->scriptFile = $scriptFile;
         $this->environmentLoader = $environmentLoader;
         $this->environmentLoader->load();
 
@@ -58,12 +64,12 @@ class App
 
     public function getStylesheetFilename()
     {
-        return $this->assetLoader->loadResource('styles.min.css');
+        return $this->assetLoader->loadResource($this->stylesheet);
     }
 
     public function getScriptFilename()
     {
-        return $this->assetLoader->loadResource('script.min.js');
+        return $this->assetLoader->loadResource($this->scriptFile);
     }
 
     public function getTwigEnvironment()

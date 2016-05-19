@@ -17,12 +17,16 @@ class Container
     private $app;
 
     const CONFIG_FILE = 'config.json';
+    const STYLESHEET = 'styles.min.css';
+    const SCRIPT_FILE = 'script.min.js';
     const TEMPLATE_DIR = 'resources/views/';
 
     public function __construct()
     {
         $this->app = new App(
             new ConfigService(self::CONFIG_FILE),
+            self::STYLESHEET,
+            self::SCRIPT_FILE,
             new Dotenv($_SERVER['DOCUMENT_ROOT']),
             new HashedAssetLoadService,
             new Twig_Environment(new Twig_Loader_Filesystem(self::TEMPLATE_DIR)),
