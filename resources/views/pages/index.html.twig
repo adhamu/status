@@ -17,6 +17,21 @@
                     <strong><a href="{{ siteStatus.endpoint }}" target="_blank">{{ siteStatus.name }}</a></strong>
                 </div>
             {% endfor %}
+            <br>
+            <legend>Server</legend>
+            {% for serviceStatus in serviceStatuses %}
+                {% if serviceStatus.status == 'OK' %}
+                    {% set alertState = 'alert-success' %}
+                    {% set stateIcon = 'check' %}
+                {% else %}
+                    {% set alertState = 'alert-danger' %}
+                    {% set stateIcon = 'times' %}
+                {% endif %}
+                <div class="alert {{ alertState }}" role="alert">
+                    <span class="pull-right">{{ serviceStatus.status }} &nbsp; <i class="fa fa-{{ stateIcon }}"></i></span>
+                    <strong>{{ serviceStatus.name }}</a></strong>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

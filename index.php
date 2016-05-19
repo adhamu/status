@@ -8,6 +8,7 @@
             'stylesheet' => $app->getStylesheetFilename(),
             'script' => $app->getScriptFilename(),
             'currentYear' => date("Y"),
-            'siteStatuses' => $app->getSiteStatuses()
+            'siteStatuses' => $app->getSiteStatuses(),
+            'serviceStatuses' => $app->getServerServiceStatuses()
         ]
     );

@@ -3,9 +3,11 @@ namespace Status;
 
 use Dotenv\Dotenv;
 use Twig_Environment;
+use Twig_Extension_Debug;
 
 use Status\Service\HashedAssetLoadService;
 use Status\Service\WebsiteStatusCheckerService;
+use Status\Service\ServerStatusCheckerService;
 
 class App
 {
@@ -13,19 +15,23 @@ class App
     private $assetLoader;
     private $twigEnvironment;
     private $websiteStatusCheckerService;
+    private $serverStatusCheckerService;
 
     public function __construct(
         Dotenv $environmentLoader,
         HashedAssetLoadService $assetLoader,
         Twig_Environment $twigEnvironment,
-        WebsiteStatusCheckerService $websiteStatusCheckerService
+        WebsiteStatusCheckerService $websiteStatusCheckerService,
+        ServerStatusCheckerService $serverStatusCheckerService
     ) {
         $this->environmentLoader = $environmentLoader;
         $this->environmentLoader->load();
 
         $this->assetLoader = $assetLoader;
         $this->twigEnvironment = $twigEnvironment;
+        $this->twigEnvironment->addExtension(new Twig_Extension_Debug());
         $this->websiteStatusCheckerService = $websiteStatusCheckerService;
+        $this->serverStatusCheckerService = $serverStatusCheckerService;
     }
 
     public function getEnv()
@@ -60,6 +66,11 @@ class App
         return $this->websiteStatusCheckerService;
     }
 
+    public function getServerStatusCheckerService()
+    {
+        return $this->serverStatusCheckerService;
+    }
+
     public function getSiteStatuses()
     {
         $siteStatuses = [];
@@ -73,6 +84,21 @@ class App
         }
 
         return $siteStatuses;
+    }
+
+    public function getServerServiceStatuses()
+    {
+        $serverServiceStatuses = [];
+
+        foreach ($this->getServerServices() as $key => $s) {
+            $serverServiceStatuses[] = [
+                'name' => $s['name'],
+                'service' => $s['service'],
+                'status' => $this->getServerStatusCheckerService()->checkService($s['command'])
+            ];
+        }
+
+        return $serverServiceStatuses;
     }
 
     private function getEndpoints()
@@ -98,6 +124,22 @@ class App
                 "name" => "LastFM API",
                 "url" => "http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user={$this->getEnvParam('LAST_FM_USERNAME')}&api_key={$this->getEnvParam('LAST_FM_API_KEY')}&format=json"
             ]
+        ];
+    }
+
+    private function getServerServices()
+    {
+        return [
+            [
+                "name" => "Apache",
+                "service" => "httpd",
+                "command" => "cat /var/run/httpd/httpd.pid"
+            ],
+            [
+                "name" => "MySQL",
+                "service" => "mysqld",
+                "command" => "cat /var/run/mysqld/mysqld.pid"
+            ],
         ];
     }
 }
