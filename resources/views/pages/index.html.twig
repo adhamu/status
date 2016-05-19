@@ -1,17 +1,22 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    <p>A friendly status monitor to show service status and uptime for web services.</p>
-    <br>
     <div class="row">
         <div class="col-sm-12">
-            <legend>What's New</legend>
-        </div>
-        <div class="col-sm-6">
-            foo
-        </div>
-        <div class="col-sm-6">
-            bar
+            <legend>Web</legend>
+            {% for siteStatus in siteStatuses %}
+                {% if siteStatus.status.code == 200 %}
+                    {% set alertState = 'alert-success' %}
+                    {% set stateIcon = 'check' %}
+                {% else %}
+                    {% set alertState = 'alert-error' %}
+                    {% set stateIcon = 'times' %}
+                {% endif %}
+                <div class="alert {{ alertState }}" role="alert">
+                    <span class="pull-right">{{ siteStatus.status.code }} &bull; {{ siteStatus.status.phrase }} &nbsp; <i class="fa fa-{{ stateIcon }}"></i></span>
+                    <strong><a href="{{ siteStatus.endpoint }}" target="_blank">{{ siteStatus.name }}</a></strong>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

@@ -3,10 +3,11 @@
     {% include "includes/head.html.twig" %}
     <body>
         <div class="container">
-            {% include "includes/nav.html.twig" %}
             {% include "includes/header.html.twig" %}
+            {% include "includes/nav.html.twig" %}
             {% include "includes/flash-messaging.html.twig" %}
             {% block content %}{% endblock %}
+            <br>
             {% include "includes/footer.html.twig" %}
         </div>
         {% include "includes/scripts.html.twig" %}

@@ -2,9 +2,12 @@
 namespace Status;
 
 use Dotenv\Dotenv;
-use Status\Service\HashedAssetLoadService;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
+use GuzzleHttp\Client;
+
+use Status\Service\HashedAssetLoadService;
+use Status\Service\WebsiteStatusCheckerService;
 
 class Container
 {
@@ -14,11 +17,11 @@ class Container
 
     public function __construct()
     {
-        $twigLoader = new Twig_Loader_Filesystem(self::TEMPLATE_DIR);
         $this->app = new App(
             new Dotenv($_SERVER['DOCUMENT_ROOT']),
             new HashedAssetLoadService,
-            new Twig_Environment($twigLoader)
+            new Twig_Environment(new Twig_Loader_Filesystem(self::TEMPLATE_DIR)),
+            new WebsiteStatusCheckerService(new Client)
         );
     }
 
