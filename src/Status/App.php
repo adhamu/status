@@ -110,7 +110,7 @@ class App
             $serverServiceStatuses[] = [
                 'name' => $s['name'],
                 'service' => $s['service'],
-                'status' => $this->getServerStatusCheckerService()->isServiceAvailble($s['pid'])
+                'status' => $this->getServerStatusCheckerService()->isServiceAvailable($s['pid'])
             ];
         }
 

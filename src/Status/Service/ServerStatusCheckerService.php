@@ -6,7 +6,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class ServerStatusCheckerService
 {
-    public function isServiceAvailble($pidFile)
+    public function isServiceAvailable($pidFile)
     {
         $process = new Process("stat {$pidFile}");
         $process->run();
