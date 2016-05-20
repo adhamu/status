@@ -1,7 +1,7 @@
 # Status Monitor
 A very simple status monitor for UNIX systems.
 
-![](screenshot.png "screenshot")
+![](screenshot.png "screenshot" =540x)
 
 ## Install
 ```shell
