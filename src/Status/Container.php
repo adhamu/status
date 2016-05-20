@@ -7,10 +7,13 @@ use Twig_Environment;
 use Twig_Extension_Debug;
 use GuzzleHttp\Client;
 
+use Status\Components\CommandRunner;
+
 use Status\Service\ConfigService;
 use Status\Service\HashedAssetLoadService;
 use Status\Service\WebsiteStatusCheckerService;
 use Status\Service\ServerStatusCheckerService;
+use Status\Service\SystemCheckerService;
 
 class Container
 {
@@ -32,7 +35,8 @@ class Container
             new Twig_Environment(new Twig_Loader_Filesystem(self::TEMPLATE_DIR)),
             new Twig_Extension_Debug,
             new WebsiteStatusCheckerService(new Client),
-            new ServerStatusCheckerService
+            new ServerStatusCheckerService(new CommandRunner),
+            new SystemCheckerService(new CommandRunner)
         );
     }
 

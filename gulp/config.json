@@ -15,7 +15,7 @@
         ]
     },
     "paths": {
-        "sass": "resources/sass/",
+        "scss": "resources/scss/",
         "js": "resources/js/",
         "imgs": "resources/img/",
         "fonts": "resources/fonts/",

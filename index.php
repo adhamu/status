@@ -9,6 +9,9 @@
             'script' => $app->getScriptFilename(),
             'currentYear' => date("Y"),
             'siteStatuses' => $app->getSiteStatuses(),
-            'serviceStatuses' => $app->getServerServiceStatuses()
+            'serviceStatuses' => $app->getServerServiceStatuses(),
+            'uptime' => $app->getSystemCheckerService()->getUptime(),
+            'machineName' => $app->getSystemCheckerService()->getMachineName(),
+            'ip' => $app->getSystemCheckerService()->getIP()
         ]
     );

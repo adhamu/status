@@ -10,7 +10,7 @@ for (i = 0; i < tasks.length; i++) {
 
 // Watch
 gulp.task("watch", function() {
-    gulp.watch(config.paths.sass+"*.scss", ["styles"]);
+    gulp.watch(config.paths.scss+"*.scss", ["styles"]);
     gulp.watch(config.paths.js+"*.js", ["scripts"]);
     gulp.watch(config.paths.bower+"*.{scss,css}", ["styles"]);
     gulp.watch(config.paths.bower+"*.js", ["scripts"]);

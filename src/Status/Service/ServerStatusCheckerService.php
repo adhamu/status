@@ -1,20 +1,19 @@
 <?php
 namespace Status\Service;
 
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
+use Status\Components\CommandRunner;
 
 class ServerStatusCheckerService
 {
+    private $commandRunner;
+
+    public function __construct(CommandRunner $commandRunner)
+    {
+        $this->commandRunner = $commandRunner;
+    }
+
     public function isServiceAvailable($pidFile)
     {
-        $process = new Process("stat {$pidFile}");
-        $process->run();
-
-        if (!$process->isSuccessful()) {
-            return false;
-        }
-
-        return true;
+        return $this->commandRunner->runCommand("stat {$pidFile}");
     }
 }

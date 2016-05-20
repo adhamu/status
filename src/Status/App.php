@@ -9,6 +9,7 @@ use Status\Service\ConfigService;
 use Status\Service\HashedAssetLoadService;
 use Status\Service\WebsiteStatusCheckerService;
 use Status\Service\ServerStatusCheckerService;
+use Status\Service\SystemCheckerService;
 
 class App
 {
@@ -20,6 +21,7 @@ class App
     private $twigEnvironment;
     private $websiteStatusCheckerService;
     private $serverStatusCheckerService;
+    private $systemCheckerService;
 
     public function __construct(
         ConfigService $configService,
@@ -30,7 +32,8 @@ class App
         Twig_Environment $twigEnvironment,
         Twig_Extension_Debug $twigDebug,
         WebsiteStatusCheckerService $websiteStatusCheckerService,
-        ServerStatusCheckerService $serverStatusCheckerService
+        ServerStatusCheckerService $serverStatusCheckerService,
+        SystemCheckerService $systemCheckerService
     ) {
         $this->configService = $configService;
         $this->stylesheet = $stylesheet;
@@ -43,6 +46,7 @@ class App
         $this->twigEnvironment->addExtension($twigDebug);
         $this->websiteStatusCheckerService = $websiteStatusCheckerService;
         $this->serverStatusCheckerService = $serverStatusCheckerService;
+        $this->systemCheckerService = $systemCheckerService;
     }
 
     public function getConfig()
@@ -85,6 +89,11 @@ class App
     public function getServerStatusCheckerService()
     {
         return $this->serverStatusCheckerService;
+    }
+
+    public function getSystemCheckerService()
+    {
+        return $this->systemCheckerService;
     }
 
     public function getSiteStatuses()
