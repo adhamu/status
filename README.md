@@ -2,7 +2,7 @@
 A very simple status monitor for UNIX systems.
 
 ## Install
-```
+```shell
 git clone https://github.com/adhamu/status.git
 cd status
 composer install
@@ -21,7 +21,7 @@ Check the prescence of a pid file to check if service is running.
 All config for endpoints and services are held in a config.json file. There is a sample file in this repository.
 
 ### Sample
-```
+```json
 {
     "web": [{
         "name": "Google",
