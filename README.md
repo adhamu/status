@@ -15,7 +15,7 @@ gulp install
 Pings web endpoints to check HTTP response headers.
 
 ## Server services
-Check the prescence of a pid file to check if status is running.
+Check the prescence of a pid file to check if service is running.
 
 ## Config
 All config for endpoints and services are held in a config.json file. There is a sample file in this repository.
