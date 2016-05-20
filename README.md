@@ -1,6 +1,8 @@
 # Status Monitor
 A very simple status monitor for UNIX systems.
 
+![](screenshot.png "screenshot")
+
 ## Install
 ```shell
 $ git clone https://github.com/adhamu/status.git
