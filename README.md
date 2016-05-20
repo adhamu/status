@@ -1,7 +1,7 @@
 # Status Monitor
 A very simple status monitor for UNIX systems.
 
-![](screenshot.png "screenshot" =540x)
+<img src="screenshot.png" width="540">
 
 ## Install
 ```shell
