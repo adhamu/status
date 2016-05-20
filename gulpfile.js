@@ -18,3 +18,6 @@ gulp.task("watch", function() {
 
 // Default task
 gulp.task("default", ["styles", "scripts", "watch"]);
+
+// Install
+gulp.task("install", ["styles", "scripts"]);
