@@ -3,12 +3,12 @@ A very simple status monitor for UNIX systems.
 
 ## Install
 ```shell
-git clone https://github.com/adhamu/status.git
-cd status
-composer install
-npm install
-bower install
-gulp install
+$ git clone https://github.com/adhamu/status.git
+$ cd status
+$ composer install
+$ npm install
+$ bower install
+$ gulp install
 ```
 
 ## Web services
