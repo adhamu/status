@@ -15,9 +15,6 @@ $ git clone https://github.com/adhamu/status.git
 $ cd status
 $ cp config.sample.json config.json
 $ composer install
-$ npm install
-$ bower install
-$ gulp install
 ```
 
 ## Web services
