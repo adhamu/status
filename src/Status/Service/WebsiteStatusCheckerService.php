@@ -3,6 +3,8 @@ namespace Status\Service;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
 
 class WebsiteStatusCheckerService
 {
@@ -21,6 +23,16 @@ class WebsiteStatusCheckerService
             $result = [
                 'code' => $response->getStatusCode(),
                 'phrase' => $response->getReasonPhrase()
+            ];
+        } catch (RequestException $e) {
+            $result = [
+                'code' => 403,
+                'phrase' => 'Bad request'
+            ];
+        } catch (ConnectException $e) {
+            $result = [
+                'code' => 500,
+                'phrase' => 'Cannot connect'
             ];
         } catch (ClientException $e) {
             $result = [
