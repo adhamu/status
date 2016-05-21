@@ -1,3 +1,13 @@
-<h4>{{ machineName }}</h4>
-<h5>{{ uptime }}</h5>
-<hr>
+<div class="row">
+    <div class="col-xs-2">
+        <p><strong>Name</strong></p>
+        <p><strong>Date</strong></p>
+        <p><strong>Uptime</strong></p>
+    </div>
+    <div class="col-xs-10">
+        <p>{{ machineName }}</p>
+        <p>{{ timestamp }}</p>
+        <p>{{ uptime }}</p>
+    </div>
+</div>
+<br>

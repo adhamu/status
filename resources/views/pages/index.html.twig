@@ -3,35 +3,44 @@
 {% block content %}
     <div class="row">
         <div class="col-sm-12">
-            <legend>Web</legend>
+            <div class="status-item heading">
+                <i class="fa fa-globe fa-lg pull-right"></i>
+                Web
+            </div>
             {% for siteStatus in siteStatuses %}
                 {% if siteStatus.status.code == 200 %}
-                    {% set alertState = 'alert-success' %}
+                    {% set alertState = 'status-ok' %}
                     {% set stateIcon = 'check' %}
                 {% else %}
-                    {% set alertState = 'alert-danger' %}
+                    {% set alertState = 'status-bad' %}
                     {% set stateIcon = 'times' %}
                 {% endif %}
-                <div class="alert {{ alertState }}" role="alert">
-                    <span class="pull-right">{{ siteStatus.status.code }} &bull; {{ siteStatus.status.phrase }} &nbsp; <i class="fa fa-{{ stateIcon }}"></i></span>
-                    <strong><a href="{{ siteStatus.endpoint }}" target="_blank">{{ siteStatus.name }}</a></strong>
+                <div class="status-item">
+                    <span class="pull-right {{ alertState }}">{{ siteStatus.status.code }} &nbsp;
+                    {{ siteStatus.status.phrase }} &nbsp;
+                    <i class="fa fa-{{ stateIcon }}"></i></span>
+                    <a href="{{ siteStatus.endpoint }}" target="_blank">{{ siteStatus.name }}</a>
                 </div>
             {% endfor %}
             <br>
-            <legend>Server</legend>
+            <div class="status-item heading">
+                <i class="fa fa-server fa-lg pull-right"></i>
+                Server
+            </div>
             {% for serviceStatus in serviceStatuses %}
                 {% if serviceStatus.status %}
-                    {% set alertState = 'alert-success' %}
+                    {% set alertState = 'status-ok' %}
                     {% set stateIcon = 'check' %}
                     {% set stateMessage = 'OK' %}
                 {% else %}
-                    {% set alertState = 'alert-danger' %}
+                    {% set alertState = 'status-bad' %}
                     {% set stateIcon = 'times' %}
                     {% set stateMessage = 'Unavailable' %}
                 {% endif %}
-                <div class="alert {{ alertState }}" role="alert">
-                    <span class="pull-right">{{ stateMessage }} &nbsp; <i class="fa fa-{{ stateIcon }}"></i></span>
-                    <strong>{{ serviceStatus.name }}</a></strong>
+                <div class="status-item">
+                    <span class="pull-right {{ alertState }}">{{ stateMessage }} &nbsp;
+                    <i class="fa fa-{{ stateIcon }}"></i></span>
+                    <p>{{ serviceStatus.name }}</p>
                 </div>
             {% endfor %}
         </div>
