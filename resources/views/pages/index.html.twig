@@ -19,7 +19,7 @@
                     <span class="pull-right {{ alertState }}">{{ siteStatus.status.code }} &nbsp;
                     {{ siteStatus.status.phrase }} &nbsp;
                     <i class="fa fa-{{ stateIcon }}"></i></span>
-                    <a href="{{ siteStatus.endpoint }}" target="_blank">{{ siteStatus.name }}</a>
+                    <p>{{ siteStatus.name }}</p>
                 </div>
             {% endfor %}
             <br>
