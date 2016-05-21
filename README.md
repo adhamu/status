@@ -7,6 +7,7 @@ A very simple status monitor for UNIX systems.
 ```shell
 $ git clone https://github.com/adhamu/status.git
 $ cd status
+$ cp config.json.sample config.sample
 $ composer install
 $ npm install
 $ bower install
