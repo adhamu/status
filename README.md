@@ -14,6 +14,7 @@ A very simple status monitor for UNIX systems.
 $ git clone https://github.com/adhamu/status.git
 $ cd status
 $ cp config.sample.json config.json
+$ touch .env
 $ composer install
 ```
 
