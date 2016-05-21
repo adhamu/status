@@ -3,6 +3,12 @@ A very simple status monitor for UNIX systems.
 
 <img src="screenshot.png" width="540">
 
+## Requirements
+- A web server
+- PHP
+- Composer
+- Node (for NPM)
+
 ## Install
 ```shell
 $ git clone https://github.com/adhamu/status.git
