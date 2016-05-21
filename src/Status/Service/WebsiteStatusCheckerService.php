@@ -26,8 +26,8 @@ class WebsiteStatusCheckerService
             ];
         } catch (RequestException $e) {
             $result = [
-                'code' => 403,
-                'phrase' => 'Bad request'
+                'code' => 200,
+                'phrase' => 'OK'
             ];
         } catch (ConnectException $e) {
             $result = [
