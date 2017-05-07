@@ -5,6 +5,7 @@
     echo $app->getTwigEnvironment()->render(
         'pages/index.html.twig',
         [
+            'base' => $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']),
             'stylesheet' => $app->getStylesheetFilename(),
             'script' => $app->getScriptFilename(),
             'currentYear' => date("Y"),
