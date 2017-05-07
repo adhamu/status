@@ -5,7 +5,7 @@
     echo $app->getTwigEnvironment()->render(
         'pages/index.html.twig',
         [
-            'base' => 'http://' . $_SERVER['SERVER_NAME'] . '/status/',
+            'base' => 'http://' . $_SERVER['HTTP_HOST'] . '/status/',
             'stylesheet' => $app->getStylesheetFilename(),
             'script' => $app->getScriptFilename(),
             'currentYear' => date("Y"),
