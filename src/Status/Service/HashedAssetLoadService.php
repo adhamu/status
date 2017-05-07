@@ -13,7 +13,7 @@ class HashedAssetLoadService
     public function loadResource($filename)
     {
         $file = basename($filename);
-        $directory = "/dist/";
+        $directory = "dist/";
         $manifest = $this->loadManifest();
 
         return $directory.$manifest[$file];
