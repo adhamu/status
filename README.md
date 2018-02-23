@@ -17,6 +17,8 @@ $ composer install && yarn && gulp install
 $ docker-compose up -d
 ```
 
+Open up [http://localhost:8888](http://localhost:8888)
+
 ## Web services
 Pings web endpoints to check HTTP response headers.
 
