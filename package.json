@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Status page for website and services",
   "devDependencies": {
+    "bootstrap": "^4.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
@@ -19,6 +20,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.5"
+    "gulp-watch": "^4.3.5",
+    "popper.js": "^1.12.9"
   }
 }

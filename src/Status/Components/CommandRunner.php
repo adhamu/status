@@ -27,6 +27,6 @@ class CommandRunner
             return '';
         }
 
-        return $process->getOutput();;
+        return $process->getOutput();
     }
 }

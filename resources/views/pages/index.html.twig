@@ -1,48 +1,44 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="status-item heading">
-                <i class="fa fa-globe fa-lg pull-right"></i>
-                Web
-            </div>
-            {% for siteStatus in siteStatuses %}
-                {% if siteStatus.status.code == 200 %}
-                    {% set alertState = 'status-ok' %}
-                    {% set stateIcon = 'check' %}
-                {% else %}
-                    {% set alertState = 'status-bad' %}
-                    {% set stateIcon = 'times' %}
-                {% endif %}
-                <div class="status-item">
-                    <span class="pull-right {{ alertState }}">{{ siteStatus.status.code }} &nbsp;
-                    {{ siteStatus.status.phrase }} &nbsp;
-                    <i class="fa fa-{{ stateIcon }}"></i></span>
-                    <p>{{ siteStatus.name }}</p>
-                </div>
-            {% endfor %}
-            <br>
-            <div class="status-item heading">
-                <i class="fa fa-server fa-lg pull-right"></i>
-                Server
-            </div>
-            {% for serviceStatus in serviceStatuses %}
-                {% if serviceStatus.status %}
-                    {% set alertState = 'status-ok' %}
-                    {% set stateIcon = 'check' %}
-                    {% set stateMessage = 'OK' %}
-                {% else %}
-                    {% set alertState = 'status-bad' %}
-                    {% set stateIcon = 'times' %}
-                    {% set stateMessage = 'Unavailable' %}
-                {% endif %}
-                <div class="status-item">
-                    <span class="pull-right {{ alertState }}">{{ stateMessage }} &nbsp;
-                    <i class="fa fa-{{ stateIcon }}"></i></span>
-                    <p>{{ serviceStatus.name }}</p>
-                </div>
-            {% endfor %}
-        </div>
+    <div class="status-item heading">
+        <i class="fa fa-globe fa-lg float-right"></i>
+        Web
     </div>
+    {% for siteStatus in siteStatuses %}
+        {% if siteStatus.status.code == 200 %}
+            {% set alertState = 'status-ok' %}
+            {% set stateIcon = 'check' %}
+        {% else %}
+            {% set alertState = 'status-bad' %}
+            {% set stateIcon = 'times' %}
+        {% endif %}
+        <div class="status-item">
+            <span class="float-right {{ alertState }}">{{ siteStatus.status.code }} &nbsp;
+            {{ siteStatus.status.phrase }} &nbsp;
+            <i class="fa fa-{{ stateIcon }}"></i></span>
+            <p>{{ siteStatus.name }}</p>
+        </div>
+    {% endfor %}
+    <br>
+    <div class="status-item heading">
+        <i class="fa fa-server fa-lg float-right"></i>
+        Server
+    </div>
+    {% for serviceStatus in serviceStatuses %}
+        {% if serviceStatus.status %}
+            {% set alertState = 'status-ok' %}
+            {% set stateIcon = 'check' %}
+            {% set stateMessage = 'OK' %}
+        {% else %}
+            {% set alertState = 'status-bad' %}
+            {% set stateIcon = 'times' %}
+            {% set stateMessage = 'Unavailable' %}
+        {% endif %}
+        <div class="status-item">
+            <span class="float-right {{ alertState }}">{{ stateMessage }} &nbsp;
+            <i class="fa fa-{{ stateIcon }}"></i></span>
+            <p>{{ serviceStatus.name }}</p>
+        </div>
+    {% endfor %}
 {% endblock %}

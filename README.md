@@ -4,8 +4,7 @@ A very simple status monitor for UNIX systems.
 <img src="screenshot.png" width="540">
 
 ## Requirements
-- A web server
-- PHP
+- Docker
 - Composer
 - Node (for NPM)
 
@@ -13,9 +12,9 @@ A very simple status monitor for UNIX systems.
 ```shell
 $ git clone https://github.com/adhamu/status.git
 $ cd status
-$ cp config.sample.json config.json
-$ touch .env
-$ composer install && npm install && bower install && gulp install
+$ mv config.sample.json config.json
+$ composer install && yarn && gulp install
+$ docker-compose up -d
 ```
 
 ## Web services
