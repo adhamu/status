@@ -6,7 +6,7 @@ A very simple status monitor for UNIX systems.
 ## Requirements
 - Docker
 - Composer
-- Node (for NPM)
+- Yarn
 
 ## Install
 ```shell
