@@ -15,11 +15,11 @@ class WebsiteStatusCheckerService
         $this->httpClient = $httpClient;
     }
 
-    public function checkUrl($url)
+    public function checkUrl($url, $verify = true)
     {
         $result = [];
         try {
-            $response = $this->httpClient->request('GET', $url);
+            $response = $this->httpClient->request('GET', $url, ['verify' => $verify]);
             $result = [
                 'code' => $response->getStatusCode(),
                 'phrase' => $response->getReasonPhrase()

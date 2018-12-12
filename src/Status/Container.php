@@ -32,7 +32,9 @@ class Container
             self::SCRIPT_FILE,
             new Dotenv($_SERVER['DOCUMENT_ROOT']),
             new HashedAssetLoadService,
-            new Twig_Environment(new Twig_Loader_Filesystem(self::TEMPLATE_DIR)),
+            new Twig_Environment(new Twig_Loader_Filesystem(self::TEMPLATE_DIR), [
+                'debug' => true
+            ]),
             new Twig_Extension_Debug,
             new WebsiteStatusCheckerService(new Client),
             new ServerStatusCheckerService(new CommandRunner),

@@ -1,10 +1,38 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    <div class="status-item heading">
-        <i class="fa fa-globe fa-lg float-right"></i>
-        Web
-    </div>
+    <pre style="background:white">
+        {{ dump(statuses) }}
+    </pre>
+    {% for groupName, group in statuses %}
+        <div class="status-item heading">
+            {{ groupName }}
+        </div>
+        {% for siteStatus in group.web %}
+            {% if siteStatus.status.code == 200 %}
+                {% set alertState = 'status-ok' %}
+                {% set alertBg = 'bg-success' %}
+                {% set stateIcon = 'check' %}
+            {% else %}
+                {% set alertState = 'status-bad' %}
+                {% set alertBg = 'bg-danger' %}
+                {% set stateIcon = 'times' %}
+            {% endif %}
+            <div class="status-item">
+                <p class="float-left">
+                    <strong>{{ siteStatus.name }}</strong>
+                </p>
+                <span class="status-badge {{ alertBg }}">{{ siteStatus.status.code }}</span>
+
+                <div class="clearfix"></div>
+
+                {% if siteStatus.status.code != 200 %}
+                    <p class="mt-2 {{ alertState }}">{{ siteStatus.status.phrase }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     {% for siteStatus in siteStatuses %}
         {% if siteStatus.status.code == 200 %}
             {% set alertState = 'status-ok' %}
