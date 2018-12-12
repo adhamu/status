@@ -8,16 +8,24 @@
     {% for siteStatus in siteStatuses %}
         {% if siteStatus.status.code == 200 %}
             {% set alertState = 'status-ok' %}
+            {% set alertBg = 'bg-success' %}
             {% set stateIcon = 'check' %}
         {% else %}
             {% set alertState = 'status-bad' %}
+            {% set alertBg = 'bg-danger' %}
             {% set stateIcon = 'times' %}
         {% endif %}
         <div class="status-item">
-            <span class="float-right {{ alertState }}">{{ siteStatus.status.code }} &nbsp;
-            {{ siteStatus.status.phrase }} &nbsp;
-            <i class="fa fa-{{ stateIcon }}"></i></span>
-            <p>{{ siteStatus.name }}</p>
+            <p class="float-left">
+                <strong>{{ siteStatus.name }}</strong>
+            </p>
+            <span class="status-badge {{ alertBg }}">{{ siteStatus.status.code }}</span>
+
+            <div class="clearfix"></div>
+
+            {% if siteStatus.status.code != 200 %}
+                <p class="mt-2 {{ alertState }}">{{ siteStatus.status.phrase }}</p>
+            {% endif %}
         </div>
     {% endfor %}
     <br>
@@ -28,17 +36,21 @@
     {% for serviceStatus in serviceStatuses %}
         {% if serviceStatus.status %}
             {% set alertState = 'status-ok' %}
+            {% set alertBg = 'bg-success' %}
             {% set stateIcon = 'check' %}
             {% set stateMessage = 'OK' %}
         {% else %}
             {% set alertState = 'status-bad' %}
             {% set stateIcon = 'times' %}
-            {% set stateMessage = 'Unavailable' %}
+            {% set alertBg = 'bg-danger' %}
+            {% set stateMessage = 'ERROR' %}
         {% endif %}
         <div class="status-item">
-            <span class="float-right {{ alertState }}">{{ stateMessage }} &nbsp;
-            <i class="fa fa-{{ stateIcon }}"></i></span>
-            <p>{{ serviceStatus.name }}</p>
+            <p class="float-left">
+                <strong>{{ serviceStatus.name }}</strong>
+            </p>
+            <span class="status-badge {{ alertBg }}">{{ stateMessage }}</span>
+            <div class="clearfix"></div>
         </div>
     {% endfor %}
 {% endblock %}

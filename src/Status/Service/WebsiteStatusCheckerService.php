@@ -26,13 +26,13 @@ class WebsiteStatusCheckerService
             ];
         } catch (RequestException $e) {
             $result = [
-                'code' => 200,
-                'phrase' => 'OK'
+                'code' => 404,
+                'phrase' => $e->getMessage(),
             ];
         } catch (ConnectException $e) {
             $result = [
                 'code' => 500,
-                'phrase' => 'Cannot connect'
+                'phrase' => $e->getMessage(),
             ];
         } catch (ClientException $e) {
             $result = [
