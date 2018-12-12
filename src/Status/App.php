@@ -98,42 +98,36 @@ class App
 
     public function getStatuses()
     {
-        return $this->getSiteStatuses();
-    }
-
-    private function getSiteStatuses()
-    {
-        $siteStatuses = [];
+        $statuses = [];
 
         foreach ($this->getConfig() as $groupName => $group) {
-            foreach ($group['web'] as $key => $e) {
-                $siteStatuses[$groupName]['web'][] = [
-                    'name' => $e['name'],
-                    'endpoint' => $e['url'],
-                    'status' => $this->getWebsiteStatusCheckerService()->checkUrl(
-                        $e['url'],
-                        is_null($e['verify']) ? true : $e['verify']
-                    )
-                ];
-            }
-        }
-        return $siteStatuses;
-    }
-
-    private function getServerServiceStatuses()
-    {
-        $serverServiceStatuses = [];
-
-        foreach ($this->getConfig() as $groupName => $group) {
-            foreach ($group['server'] as $key => $s) {
-                $serverServiceStatuses[$groupName]['server'][] = [
-                    'name' => $s['name'],
-                    'service' => $s['service'],
-                    'status' => $this->getServerStatusCheckerService()->isServiceAvailable($s['pid'])
-                ];
+            foreach ($group as $type => $t) {
+                switch ($type) {
+                    case 'web':
+                        foreach ($group['web'] as $key => $e) {
+                            $statuses[$groupName]['web'][] = [
+                                'name' => $e['name'],
+                                'endpoint' => $e['url'],
+                                'status' => $this->getWebsiteStatusCheckerService()->checkUrl(
+                                    $e['url'],
+                                    is_null($e['verify']) ? true : $e['verify']
+                                )
+                            ];
+                        }
+                        break;
+                    case 'server':
+                        foreach ($group['server'] as $key => $s) {
+                            $statuses[$groupName]['server'][] = [
+                                'name' => $s['name'],
+                                'service' => $s['service'],
+                                'status' => $this->getServerStatusCheckerService()->isServiceAvailable($s['pid'])
+                            ];
+                        }
+                        break;
+                }
             }
         }
 
-        return $serverServiceStatuses;
+        return $statuses;
     }
 }

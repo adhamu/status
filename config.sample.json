@@ -1,18 +1,27 @@
 {
-    "web": [{
-        "name": "Google",
-        "url": "https://www.google.co.uk"
-    }, {
-        "name": "Apple",
-        "url": "http://www.apple.com/uk"
-    }],
-    "server": [{
-        "name": "Apache",
-        "service": "httpd",
-        "pid": "/var/run/httpd/httpd.pid"
-    }, {
-        "name": "MySQL",
-        "service": "mysqld",
-        "pid": "/var/run/mysqld/mysqld.pid"
-    }]
+    "Development": {
+        "web": [{
+            "name": "Blog",
+            "url": "http://localhost/blog"
+        }, {
+            "name": "PHPMyAdmin",
+            "url": "http://localhost/pma"
+        }],
+        "server": [{
+            "name": "Docker",
+            "service": "docker",
+            "pid": "/var/run/httpd/docker.sock"
+        }]
+    },
+    "Production": {
+        "web": [{
+            "name": "Blog",
+            "url": "https://amitd.co/blog"
+        }],
+        "server": [{
+            "name": "MySQL",
+            "service": "mysqld",
+            "pid": "/var/run/mysqld/mysqld.pid"
+        }]
+    }
 }

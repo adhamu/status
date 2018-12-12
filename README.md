@@ -22,6 +22,8 @@ Open up [http://localhost:8888](http://localhost:8888)
 ## Web services
 Pings web endpoints to check HTTP response headers.
 
+Note: You can add `verify: false` to web endpoints to surpress SSL errors. (Useful when using self-signed certificates).
+
 ## Server services
 Check the prescence of a pid file to check if service is running.
 
@@ -31,21 +33,30 @@ All config for endpoints and services are held in a config.json file. There is a
 ### Sample
 ```json
 {
-    "web": [{
-        "name": "Google",
-        "url": "https://www.google.co.uk"
-    }, {
-        "name": "Apple",
-        "url": "http://www.apple.com/uk"
-    }],
-    "server": [{
-        "name": "Apache",
-        "service": "httpd",
-        "pid": "/var/run/httpd/httpd.pid"
-    }, {
-        "name": "MySQL",
-        "service": "mysqld",
-        "pid": "/var/run/mysqld/mysqld.pid"
-    }]
+    "Development": {
+        "web": [{
+            "name": "Blog",
+            "url": "http://localhost/blog"
+        }, {
+            "name": "PHPMyAdmin",
+            "url": "http://localhost/pma"
+        }],
+        "server": [{
+            "name": "Docker",
+            "service": "docker",
+            "pid": "/var/run/httpd/docker.sock"
+        }]
+    },
+    "Production": {
+        "web": [{
+            "name": "Blog",
+            "url": "https://amitd.co/blog"
+        }],
+        "server": [{
+            "name": "MySQL",
+            "service": "mysqld",
+            "pid": "/var/run/mysqld/mysqld.pid"
+        }]
+    }
 }
 ```
