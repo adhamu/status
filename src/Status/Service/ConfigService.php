@@ -10,7 +10,7 @@ class ConfigService
         $this->configFile = $configFile;
     }
 
-    public function loadConfig()
+    public function loadConfig(): array
     {
         $file = file_get_contents($this->configFile);
 

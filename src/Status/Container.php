@@ -42,7 +42,7 @@ class Container
         );
     }
 
-    public function get()
+    public function get(): App
     {
         return $this->app;
     }

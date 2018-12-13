@@ -6,7 +6,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class CommandRunner
 {
-    public static function runCommand($command)
+    public static function runCommand($command): bool
     {
         $process = new Process($command);
         $process->run();
@@ -18,7 +18,7 @@ class CommandRunner
         return true;
     }
 
-    public static function runCommandWithOutput($command)
+    public static function runCommandWithOutput($command): string
     {
         $process = new Process($command);
         $process->run();

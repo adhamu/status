@@ -12,17 +12,17 @@ class SystemCheckerService
         $this->commandRunner = $commandRunner;
     }
 
-    public function getUptime()
+    public function getUptime(): string
     {
         return $this->commandRunner->runCommandWithOutput('uptime');
     }
 
-    public function getMachineName()
+    public function getMachineName(): string
     {
         return $this->commandRunner->runCommandWithOutput('hostname -s');
     }
 
-    public function getIP()
+    public function getIP(): string
     {
         return $this->commandRunner->runCommandWithOutput('ipconfig getifaddr en0');
     }

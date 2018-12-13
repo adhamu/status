@@ -49,54 +49,54 @@ class App
         $this->systemCheckerService = $systemCheckerService;
     }
 
-    public function getConfig()
+    public function getConfig(): array
     {
         return $this->configService->loadConfig();
     }
 
-    public function getEnv()
+    public function getEnv(): array
     {
         return $_ENV;
     }
 
-    public function getEnvParam($param)
+    public function getEnvParam($param): string
     {
         $env = $this->getEnv();
 
         return $env[$param];
     }
 
-    public function getStylesheetFilename()
+    public function getStylesheetFilename(): string
     {
         return $this->assetLoader->loadResource($this->stylesheet);
     }
 
-    public function getScriptFilename()
+    public function getScriptFilename(): string
     {
         return $this->assetLoader->loadResource($this->scriptFile);
     }
 
-    public function getTwigEnvironment()
+    public function getTwigEnvironment(): Twig_Environment
     {
         return $this->twigEnvironment;
     }
 
-    public function getWebsiteStatusCheckerService()
+    public function getWebsiteStatusCheckerService(): WebsiteStatusCheckerService
     {
         return $this->websiteStatusCheckerService;
     }
 
-    public function getServerStatusCheckerService()
+    public function getServerStatusCheckerService(): ServerStatusCheckerService
     {
         return $this->serverStatusCheckerService;
     }
 
-    public function getSystemCheckerService()
+    public function getSystemCheckerService(): SystemCheckerService
     {
         return $this->systemCheckerService;
     }
 
-    public function getStatuses()
+    public function getStatuses(): array
     {
         $statuses = [];
 
