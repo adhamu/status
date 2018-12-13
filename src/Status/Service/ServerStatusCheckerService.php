@@ -12,12 +12,12 @@ class ServerStatusCheckerService
         $this->commandRunner = $commandRunner;
     }
 
-    public function isServiceAvailable(string $pidFile, string $tunnel = null): string
+    public function isServiceAvailable(string $pidFile, string $remote = null): string
     {
         $command = '';
 
-        if (!is_null($tunnel)) {
-            $command .= 'ssh ' . $tunnel . ' ';
+        if (!is_null($remote)) {
+            $command .= 'ssh ' . $remote . ' ';
         }
         $command .= 'stat ' . $pidFile . ' > /dev/null';
 
