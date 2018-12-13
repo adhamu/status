@@ -12,7 +12,7 @@ class ServerStatusCheckerService
         $this->commandRunner = $commandRunner;
     }
 
-    public function isServiceAvailable($pidFile)
+    public function isServiceAvailable(string $pidFile)
     {
         return $this->commandRunner->runCommand("stat {$pidFile}");
     }

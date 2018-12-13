@@ -10,7 +10,7 @@ class HashedAssetLoadService
      * @param  string
      * @return string
      */
-    public function loadResource($filename)
+    public function loadResource(string $filename)
     {
         $file = basename($filename);
         $directory = "dist/";

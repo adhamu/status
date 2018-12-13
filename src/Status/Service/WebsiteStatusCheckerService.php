@@ -15,7 +15,7 @@ class WebsiteStatusCheckerService
         $this->httpClient = $httpClient;
     }
 
-    public function checkUrl($url, $verify = true)
+    public function checkUrl(string $url, bool $verify = true)
     {
         $result = [];
         try {

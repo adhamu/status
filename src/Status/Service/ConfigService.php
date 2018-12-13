@@ -5,7 +5,7 @@ class ConfigService
 {
     private $configFile;
 
-    public function __construct($configFile)
+    public function __construct(string $configFile)
     {
         $this->configFile = $configFile;
     }
