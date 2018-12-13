@@ -24,7 +24,7 @@ class CommandRunner
         $process->run();
 
         if (!$process->isSuccessful()) {
-            return '';
+            return $process->getErrorOutput();
         }
 
         return $process->getOutput();

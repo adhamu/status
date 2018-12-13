@@ -29,7 +29,7 @@
             </div>
         {% endfor %}
         {% for serviceStatus in group.server %}
-            {% if serviceStatus.status %}
+            {% if serviceStatus.status == '' %}
                 {% set alertState = 'status-ok' %}
                 {% set alertBg = 'bg-success' %}
                 {% set stateIcon = 'check' %}
@@ -46,6 +46,10 @@
                 </p>
                 <span class="status-badge {{ alertBg }}">{{ stateMessage }}</span>
                 <div class="clearfix"></div>
+
+                {% if serviceStatus.status != '' %}
+                    <p class="mt-2 {{ alertState }}">{{ serviceStatus.status }}</p>
+                {% endif %}
             </div>
         {% endfor %}
     {% endfor %}

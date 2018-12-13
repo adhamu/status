@@ -120,7 +120,10 @@ class App
                             $statuses[$groupName]['server'][] = [
                                 'name' => $s['name'],
                                 'service' => $s['service'],
-                                'status' => $this->getServerStatusCheckerService()->isServiceAvailable($s['pid'])
+                                'status' => $this->getServerStatusCheckerService()->isServiceAvailable(
+                                    $s['pid'],
+                                    $s['remote'] ?? null
+                                )
                             ];
                         }
                         break;
